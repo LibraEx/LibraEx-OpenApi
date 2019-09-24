@@ -1,4 +1,4 @@
-package io.bhex.api.client.domain.option;
+package io.libraex.api.client.domain.option;
 
 import lombok.Builder;
 import lombok.Data;

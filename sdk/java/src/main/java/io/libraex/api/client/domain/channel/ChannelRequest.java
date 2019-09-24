@@ -1,4 +1,4 @@
-package io.bhex.api.client.domain.channel;
+package io.libraex.api.client.domain.channel;
 
 
 import java.util.HashMap;

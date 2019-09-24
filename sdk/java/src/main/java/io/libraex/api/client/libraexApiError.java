@@ -1,12 +1,13 @@
-package io.bhex.api.client;
+package io.libraex.api.client;
 
-import io.bhex.api.client.constant.BHexConstants;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import io.libraex.api.client.constant.libraexConstants;
+
 /**
- * BHex API error object.
+ * libraex API error object.
  */
-public class BHexApiError {
+public class libraexApiError {
 
     /**
      * Error code.
@@ -36,7 +37,7 @@ public class BHexApiError {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, BHexConstants.TO_STRING_BUILDER_STYLE)
+        return new ToStringBuilder(this, libraexConstants.TO_STRING_BUILDER_STYLE)
                 .append("code", code)
                 .append("msg", msg)
                 .toString();

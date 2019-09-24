@@ -1,16 +1,17 @@
-package io.bhex.api.client.impl;
+package io.libraex.api.client.impl;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import io.bhex.api.client.BHexApiCallback;
-import io.bhex.api.client.constant.BHexConstants;
-import io.bhex.api.client.domain.account.SocketAccount;
-import io.bhex.api.client.domain.account.SocketOrder;
-import io.bhex.api.client.domain.account.SocketUserResponse;
-import io.bhex.api.client.domain.channel.EventType;
-import io.bhex.api.client.exception.BHexApiException;
+
+import io.libraex.api.client.libraexApiCallback;
+import io.libraex.api.client.constant.libraexConstants;
+import io.libraex.api.client.domain.account.SocketAccount;
+import io.libraex.api.client.domain.account.SocketOrder;
+import io.libraex.api.client.domain.account.SocketUserResponse;
+import io.libraex.api.client.domain.channel.EventType;
+import io.libraex.api.client.exception.libraexApiException;
 import okhttp3.Response;
 import okhttp3.WebSocket;
 import okhttp3.WebSocketListener;
@@ -20,11 +21,11 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * BHex API WebSocket listener.
+ * libraex API WebSocket listener.
  */
-public class BHexApiWebSocketUserListener<T> extends WebSocketListener {
+public class libraexApiWebSocketUserListener<T> extends WebSocketListener {
 
-    private BHexApiCallback<T> callback;
+    private libraexApiCallback<T> callback;
 
     private boolean closing = false;
 
@@ -32,7 +33,7 @@ public class BHexApiWebSocketUserListener<T> extends WebSocketListener {
 
     private Map<String, Long> pingMap = Maps.newHashMap();
 
-    public BHexApiWebSocketUserListener(BHexApiCallback<T> callback) {
+    public libraexApiWebSocketUserListener(libraexApiCallback<T> callback) {
         this.callback = callback;
     }
 
@@ -73,10 +74,10 @@ public class BHexApiWebSocketUserListener<T> extends WebSocketListener {
                     }
                 }
             } else {
-                JsonNode pingNode = jsonNode.get(BHexConstants.PING_MSG_KEY);
+                JsonNode pingNode = jsonNode.get(libraexConstants.PING_MSG_KEY);
                 if (pingNode != null) {
                     pingTime = pingNode.asLong();
-                    pingMap.put(BHexConstants.PONG_MSG_KEY, System.currentTimeMillis());
+                    pingMap.put(libraexConstants.PONG_MSG_KEY, System.currentTimeMillis());
                     String message = mapper.writeValueAsString(pingMap);
                     webSocket.send(message);
                 }
@@ -92,7 +93,7 @@ public class BHexApiWebSocketUserListener<T> extends WebSocketListener {
             callback.onResponse((T) event);
         } catch (IOException e) {
             e.printStackTrace();
-            throw new BHexApiException(e);
+            throw new libraexApiException(e);
         }
     }
 

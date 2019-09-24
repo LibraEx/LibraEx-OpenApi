@@ -1,4 +1,4 @@
-package io.bhex.api.client.domain.general;
+package io.libraex.api.client.domain.general;
 
 
 /**

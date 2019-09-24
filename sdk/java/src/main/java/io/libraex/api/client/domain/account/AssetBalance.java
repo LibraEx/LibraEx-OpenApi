@@ -1,7 +1,9 @@
-package io.bhex.api.client.domain.account;
+package io.libraex.api.client.domain.account;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import io.bhex.api.client.constant.BHexConstants;
+
+import io.libraex.api.client.constant.libraexConstants;
+
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
@@ -53,7 +55,7 @@ public class AssetBalance {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, BHexConstants.TO_STRING_BUILDER_STYLE)
+        return new ToStringBuilder(this, libraexConstants.TO_STRING_BUILDER_STYLE)
                 .append("asset", asset)
                 .append("free", free)
                 .append("locked", locked)

@@ -1,13 +1,14 @@
 
-package io.bhex.api.client.domain.option;
+package io.libraex.api.client.domain.option;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import io.libraex.api.client.domain.account.OrderSide;
+import io.libraex.api.client.domain.account.OrderStatus;
+
 import java.util.List;
 
-import io.bhex.api.client.domain.account.OrderSide;
-import io.bhex.api.client.domain.account.OrderStatus;
 import lombok.Data;
 import lombok.Singular;
 

@@ -1,11 +1,12 @@
-package io.bhex.api.client.impl;
+package io.libraex.api.client.impl;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.bhex.api.client.BHexApiError;
-import io.bhex.api.client.constant.BHexConstants;
-import io.bhex.api.client.exception.BHexApiException;
-import io.bhex.api.client.security.AuthenticationInterceptor;
+
+import io.libraex.api.client.libraexApiError;
+import io.libraex.api.client.constant.libraexConstants;
+import io.libraex.api.client.exception.libraexApiException;
+import io.libraex.api.client.security.AuthenticationInterceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.ResponseBody;
 import org.apache.commons.lang3.StringUtils;
@@ -20,9 +21,9 @@ import java.lang.annotation.Annotation;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Generates a BHex API implementation based on @see {@link io.bhex.api.client.service.BHexApiService}.
+ * Generates a libraex API implementation based on @see {@link io.libraex.api.client.service.libraexApiService}.
  */
-public class BHexApiServiceGenerator {
+public class libraexApiServiceGenerator {
     private static final OkHttpClient sharedClient = new OkHttpClient.Builder()
             .pingInterval(20, TimeUnit.SECONDS)
             .build();
@@ -33,16 +34,16 @@ public class BHexApiServiceGenerator {
     private static final Converter.Factory converterFactory = JacksonConverterFactory.create(OBJECT_MAPPER);
 
     @SuppressWarnings("unchecked")
-    private static final Converter<ResponseBody, BHexApiError> errorBodyConverter =
-            (Converter<ResponseBody, BHexApiError>) converterFactory.responseBodyConverter(
-                    BHexApiError.class, new Annotation[0], null);
+    private static final Converter<ResponseBody, libraexApiError> errorBodyConverter =
+            (Converter<ResponseBody, libraexApiError>) converterFactory.responseBodyConverter(
+                    libraexApiError.class, new Annotation[0], null);
 
     public static <S> S createService(Class<S> serviceClass) {
-        return createService(BHexConstants.API_BASE_URL, serviceClass, null, null);
+        return createService(libraexConstants.API_BASE_URL, serviceClass, null, null);
     }
 
     public static <S> S createService(Class<S> serviceClass, String apiKey, String secret) {
-        return createService(BHexConstants.API_BASE_URL, serviceClass, apiKey, secret);
+        return createService(libraexConstants.API_BASE_URL, serviceClass, apiKey, secret);
     }
 
     /**
@@ -81,18 +82,18 @@ public class BHexApiServiceGenerator {
             if (response.isSuccessful()) {
                 return response.body();
             } else {
-                BHexApiError apiError = getBHexApiError(response);
-                throw new BHexApiException(apiError);
+                libraexApiError apiError = getlibraexApiError(response);
+                throw new libraexApiException(apiError);
             }
         } catch (IOException e) {
-            throw new BHexApiException(e);
+            throw new libraexApiException(e);
         }
     }
 
     /**
      * Extracts and converts the response error body into an object.
      */
-    public static BHexApiError getBHexApiError(Response<?> response) throws IOException, BHexApiException {
+    public static libraexApiError getlibraexApiError(Response<?> response) throws IOException, libraexApiException {
         return errorBodyConverter.convert(response.errorBody());
     }
 

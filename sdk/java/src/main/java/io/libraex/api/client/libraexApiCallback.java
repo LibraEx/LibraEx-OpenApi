@@ -1,15 +1,15 @@
-package io.bhex.api.client;
+package io.libraex.api.client;
 
 /**
- * BHexApiCallback is a functional interface used together with the BHexApiAsyncClient to provide a non-blocking REST client.
+ * libraexApiCallback is a functional interface used together with the libraexApiAsyncClient to provide a non-blocking REST client.
  *
  * @param <T> the return type from the callback
  */
 @FunctionalInterface
-public interface BHexApiCallback<T> {
+public interface libraexApiCallback<T> {
 
     /**
-     * Called whenever a response comes back from the BHex API.
+     * Called whenever a response comes back from the libraex API.
      *
      * @param response the expected response object
      */

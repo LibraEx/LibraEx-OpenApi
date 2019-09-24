@@ -1,9 +1,9 @@
-package io.bhex.api.test;
+package io.libraex.api.test;
 
-import io.bhex.api.client.BHexApiClientFactory;
-import io.bhex.api.client.BHexApiRestClient;
-import io.bhex.api.client.domain.market.*;
-import io.bhex.api.test.constant.Constants;
+import io.libraex.api.client.libraexApiClientFactory;
+import io.libraex.api.client.libraexApiRestClient;
+import io.libraex.api.client.domain.market.*;
+import io.libraex.api.test.constant.Constants;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ public class MarketDataRestApiTest {
 
     public static void main(String[] args) {
 
-        BHexApiClientFactory factory = BHexApiClientFactory.newInstance();
-        BHexApiRestClient client = factory.newRestClient();
+        libraexApiClientFactory factory = libraexApiClientFactory.newInstance();
+        libraexApiRestClient client = factory.newRestClient();
         String symbol = "BTCUSDT";
 
 

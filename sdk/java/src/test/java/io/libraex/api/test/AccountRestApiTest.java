@@ -1,11 +1,11 @@
-package io.bhex.api.test;
+package io.libraex.api.test;
 
-import io.bhex.api.client.BHexApiClientFactory;
-import io.bhex.api.client.BHexApiRestClient;
-import io.bhex.api.client.constant.BHexConstants;
-import io.bhex.api.client.domain.account.*;
-import io.bhex.api.client.domain.account.request.*;
-import io.bhex.api.test.constant.Constants;
+import io.libraex.api.client.libraexApiClientFactory;
+import io.libraex.api.client.libraexApiRestClient;
+import io.libraex.api.client.constant.libraexConstants;
+import io.libraex.api.client.domain.account.*;
+import io.libraex.api.client.domain.account.request.*;
+import io.libraex.api.test.constant.Constants;
 
 import java.util.List;
 
@@ -14,8 +14,8 @@ public class AccountRestApiTest {
 
     public static void main(String[] args) {
 
-        BHexApiClientFactory factory = BHexApiClientFactory.newInstance(Constants.ACCESS_KEY, Constants.SECRET_KEY);
-        BHexApiRestClient client = factory.newRestClient();
+        libraexApiClientFactory factory = libraexApiClientFactory.newInstance(Constants.ACCESS_KEY, Constants.SECRET_KEY);
+        libraexApiRestClient client = factory.newRestClient();
 
         System.out.println("\n ------limit buy-----");
         NewOrderResponse response1 = client.newOrder(NewOrder.limitBuy("BTCUSDT", TimeInForce.GTC, "0.01", "5678.9"));
@@ -50,7 +50,7 @@ public class AccountRestApiTest {
         System.out.println(historyOrderList);
 
         System.out.println("\n ------get account information-----");
-        Account account = client.getAccount(BHexConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis());
+        Account account = client.getAccount(libraexConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis());
         System.out.println(account);
         System.out.println(account.getBalances());
         System.out.println(account.getAssetBalance("ETH"));

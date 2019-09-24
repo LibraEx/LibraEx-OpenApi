@@ -1,7 +1,7 @@
-package io.bhex.api.client.domain.general;
+package io.libraex.api.client.domain.general;
 
 /**
- * Time of the server running BHex's REST API.
+ * Time of the server running libraex's REST API.
  */
 public class ServerTime {
     private Long serverTime;

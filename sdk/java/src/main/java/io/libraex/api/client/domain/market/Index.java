@@ -1,4 +1,4 @@
-package io.bhex.api.client.domain.market;
+package io.libraex.api.client.domain.market;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.util.Map;
 
 /**
- * Index of a symbol in BHex.
+ * Index of a symbol in libraex.
  */
 @Data
 @NoArgsConstructor

@@ -1,7 +1,8 @@
-package io.bhex.api.client.domain.general;
+package io.libraex.api.client.domain.general;
 
-import io.bhex.api.client.constant.BHexConstants;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+
+import io.libraex.api.client.constant.libraexConstants;
 
 import java.io.Serializable;
 import java.util.List;
@@ -93,7 +94,7 @@ public class Symbol implements Serializable {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, BHexConstants.TO_STRING_BUILDER_STYLE)
+        return new ToStringBuilder(this, libraexConstants.TO_STRING_BUILDER_STYLE)
                 .append("symbol", symbol)
                 .append("status", status)
                 .append("baseAsset", baseAsset)

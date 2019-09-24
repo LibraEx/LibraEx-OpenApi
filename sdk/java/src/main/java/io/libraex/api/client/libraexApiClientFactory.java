@@ -1,16 +1,16 @@
-package io.bhex.api.client;
+package io.libraex.api.client;
 
-import io.bhex.api.client.constant.BHexConstants;
-import io.bhex.api.client.impl.BHexApiRestClientImpl;
-import io.bhex.api.client.impl.BHexApiWebSocketClientImpl;
-import io.bhex.api.client.impl.BHexOptionApiRestClientImpl;
+import static io.libraex.api.client.impl.libraexApiServiceGenerator.getSharedClient;
 
-import static io.bhex.api.client.impl.BHexApiServiceGenerator.getSharedClient;
+import io.libraex.api.client.constant.libraexConstants;
+import io.libraex.api.client.impl.libraexApiRestClientImpl;
+import io.libraex.api.client.impl.libraexApiWebSocketClientImpl;
+import io.libraex.api.client.impl.libraexOptionApiRestClientImpl;
 
 /**
- * A factory for creating BHexApi client objects.
+ * A factory for creating libraexApi client objects.
  */
-public final class BHexApiClientFactory {
+public final class libraexApiClientFactory {
 
     /**
      * API Key
@@ -22,20 +22,20 @@ public final class BHexApiClientFactory {
      */
     private String secret;
 
-    private String baseUrl = BHexConstants.API_BASE_URL;
+    private String baseUrl = libraexConstants.API_BASE_URL;
 
     /**
-     * Instantiates a new BHex api client factory.
+     * Instantiates a new libraex api client factory.
      *
      * @param apiKey the API key
      * @param secret the Secret
      */
-    private BHexApiClientFactory(String apiKey, String secret) {
+    private libraexApiClientFactory(String apiKey, String secret) {
         this.apiKey = apiKey;
         this.secret = secret;
     }
 
-    private BHexApiClientFactory(String baseUrl, String apiKey, String secret) {
+    private libraexApiClientFactory(String baseUrl, String apiKey, String secret) {
         this.baseUrl = baseUrl;
         this.apiKey = apiKey;
         this.secret = secret;
@@ -46,10 +46,10 @@ public final class BHexApiClientFactory {
      *
      * @param apiKey the API key
      * @param secret the Secret
-     * @return the BHex api client factory
+     * @return the libraex api client factory
      */
-    public static BHexApiClientFactory newInstance(String apiKey, String secret) {
-        return new BHexApiClientFactory(apiKey, secret);
+    public static libraexApiClientFactory newInstance(String apiKey, String secret) {
+        return new libraexApiClientFactory(apiKey, secret);
     }
 
     /**
@@ -60,29 +60,29 @@ public final class BHexApiClientFactory {
      * @param secret
      * @return
      */
-    public static BHexApiClientFactory newInstance(String baseUrl, String apiKey, String secret) {
-        return new BHexApiClientFactory(baseUrl, apiKey, secret);
+    public static libraexApiClientFactory newInstance(String baseUrl, String apiKey, String secret) {
+        return new libraexApiClientFactory(baseUrl, apiKey, secret);
     }
 
     /**
      * New instance without authentication.
      *
-     * @return the BHex api client factory
+     * @return the libraex api client factory
      */
-    public static BHexApiClientFactory newInstance() {
-        return new BHexApiClientFactory(null, null);
+    public static libraexApiClientFactory newInstance() {
+        return new libraexApiClientFactory(null, null);
     }
 
     /**
      * Creates a new synchronous/blocking REST client.
      */
-    public BHexApiRestClient newRestClient() {
-        return new BHexApiRestClientImpl(baseUrl, apiKey, secret);
+    public libraexApiRestClient newRestClient() {
+        return new libraexApiRestClientImpl(baseUrl, apiKey, secret);
     }
 
 
-    public BHexApiWebSocketClient newWebSocketClient() {
-        return new BHexApiWebSocketClientImpl(getSharedClient(), BHexConstants.WS_API_BASE_URL, BHexConstants.WS_API_USER_URL);
+    public libraexApiWebSocketClient newWebSocketClient() {
+        return new libraexApiWebSocketClientImpl(getSharedClient(), libraexConstants.WS_API_BASE_URL, libraexConstants.WS_API_USER_URL);
     }
 
     /**
@@ -92,15 +92,15 @@ public final class BHexApiClientFactory {
      * @param wsApiUserUrl
      * @return
      */
-    public BHexApiWebSocketClient newWebSocketClient(String wsApiBaseUrl, String wsApiUserUrl) {
-        return new BHexApiWebSocketClientImpl(getSharedClient(), wsApiBaseUrl, wsApiUserUrl);
+    public libraexApiWebSocketClient newWebSocketClient(String wsApiBaseUrl, String wsApiUserUrl) {
+        return new libraexApiWebSocketClientImpl(getSharedClient(), wsApiBaseUrl, wsApiUserUrl);
     }
 
     /**
      * Creates a new synchronous/blocking Option REST client.
      */
-    public BHexOptionApiRestClient newOptionRestClient() {
-        return new BHexOptionApiRestClientImpl(baseUrl, apiKey, secret);
+    public libraexOptionApiRestClient newOptionRestClient() {
+        return new libraexOptionApiRestClientImpl(baseUrl, apiKey, secret);
     }
 
 }

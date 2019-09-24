@@ -1,7 +1,8 @@
-package io.bhex.api.client.domain.account.request;
+package io.libraex.api.client.domain.account.request;
 
-import io.bhex.api.client.constant.BHexConstants;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+
+import io.libraex.api.client.constant.libraexConstants;
 
 public class DepositOrderRequest extends OrderRequest {
 
@@ -80,7 +81,7 @@ public class DepositOrderRequest extends OrderRequest {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, BHexConstants.TO_STRING_BUILDER_STYLE)
+        return new ToStringBuilder(this, libraexConstants.TO_STRING_BUILDER_STYLE)
                 .append("fromId", fromId)
                 .append("startTime", startTime)
                 .append("endTime", endTime)

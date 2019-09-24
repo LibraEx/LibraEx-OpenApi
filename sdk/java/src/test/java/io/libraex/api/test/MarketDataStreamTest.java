@@ -1,14 +1,14 @@
-package io.bhex.api.test;
+package io.libraex.api.test;
 
-import io.bhex.api.client.BHexApiClientFactory;
-import io.bhex.api.client.BHexApiWebSocketClient;
-import io.bhex.api.client.domain.market.CandlestickInterval;
+import io.libraex.api.client.libraexApiClientFactory;
+import io.libraex.api.client.libraexApiWebSocketClient;
+import io.libraex.api.client.domain.market.CandlestickInterval;
 
 public class MarketDataStreamTest {
 
     public static void main(String[] args) {
 
-        BHexApiWebSocketClient client = BHexApiClientFactory.newInstance().newWebSocketClient();
+        libraexApiWebSocketClient client = libraexApiClientFactory.newInstance().newWebSocketClient();
 
         // depth
         client.onDepthEvent("BTCUSDT", response -> System.out.println(response));

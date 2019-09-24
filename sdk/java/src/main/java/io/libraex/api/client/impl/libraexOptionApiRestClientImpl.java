@@ -1,46 +1,46 @@
-package io.bhex.api.client.impl;
+package io.libraex.api.client.impl;
+
+import static io.libraex.api.client.impl.libraexApiServiceGenerator.createService;
+import static io.libraex.api.client.impl.libraexApiServiceGenerator.executeSync;
 
 import java.util.List;
 
-import io.bhex.api.client.BHexOptionApiRestClient;
-import io.bhex.api.client.constant.BHexConstants;
-import io.bhex.api.client.domain.account.request.CancelOrderRequest;
-import io.bhex.api.client.domain.option.OptionMatchResult;
-import io.bhex.api.client.domain.option.OptionOrderResult;
-import io.bhex.api.client.domain.option.PositionResult;
-import io.bhex.api.client.domain.option.SettlementResult;
-import io.bhex.api.client.domain.option.TokenOptionResult;
-import io.bhex.api.client.domain.option.request.OptionHistoryOrderRequest;
-import io.bhex.api.client.domain.option.request.OptionOpenOrderRequest;
-import io.bhex.api.client.domain.option.request.OptionOrderRequest;
-import io.bhex.api.client.domain.option.request.OptionPositionRequest;
-import io.bhex.api.client.domain.option.request.OptionSettlementRequest;
-import io.bhex.api.client.domain.option.request.OptionTradeRequest;
-import io.bhex.api.client.domain.option.request.OptionsRequest;
-import io.bhex.api.client.service.BHexOptionApiService;
-
-import static io.bhex.api.client.impl.BHexApiServiceGenerator.createService;
-import static io.bhex.api.client.impl.BHexApiServiceGenerator.executeSync;
+import io.libraex.api.client.libraexOptionApiRestClient;
+import io.libraex.api.client.constant.libraexConstants;
+import io.libraex.api.client.domain.account.request.CancelOrderRequest;
+import io.libraex.api.client.domain.option.OptionMatchResult;
+import io.libraex.api.client.domain.option.OptionOrderResult;
+import io.libraex.api.client.domain.option.PositionResult;
+import io.libraex.api.client.domain.option.SettlementResult;
+import io.libraex.api.client.domain.option.TokenOptionResult;
+import io.libraex.api.client.domain.option.request.OptionHistoryOrderRequest;
+import io.libraex.api.client.domain.option.request.OptionOpenOrderRequest;
+import io.libraex.api.client.domain.option.request.OptionOrderRequest;
+import io.libraex.api.client.domain.option.request.OptionPositionRequest;
+import io.libraex.api.client.domain.option.request.OptionSettlementRequest;
+import io.libraex.api.client.domain.option.request.OptionTradeRequest;
+import io.libraex.api.client.domain.option.request.OptionsRequest;
+import io.libraex.api.client.service.libraexOptionApiService;
 
 /**
- * Implementation of BHex's Option REST API using Retrofit with synchronous/blocking method calls.
+ * Implementation of libraex's Option REST API using Retrofit with synchronous/blocking method calls.
  */
-public class BHexOptionApiRestClientImpl implements BHexOptionApiRestClient {
+public class libraexOptionApiRestClientImpl implements libraexOptionApiRestClient {
 
-    private final BHexOptionApiService bHexOptionApiService;
+    private final libraexOptionApiService libraexOptionApiService;
 
-    public BHexOptionApiRestClientImpl(String baseUrl, String apiKey, String secret) {
-        bHexOptionApiService = createService(baseUrl, BHexOptionApiService.class, apiKey, secret);
+    public libraexOptionApiRestClientImpl(String baseUrl, String apiKey, String secret) {
+        libraexOptionApiService = createService(baseUrl, libraexOptionApiService.class, apiKey, secret);
     }
 
     @Override
     public List<TokenOptionResult> getOptions(OptionsRequest request) {
-        return executeSync(bHexOptionApiService.getOptions(request.getExpired()));
+        return executeSync(libraexOptionApiService.getOptions(request.getExpired()));
     }
 
     @Override
     public OptionOrderResult newOptionOrder(OptionOrderRequest request) {
-        return executeSync(bHexOptionApiService.newOptionOrder(
+        return executeSync(libraexOptionApiService.newOptionOrder(
                 request.getSymbol(),
                 request.getOrderSide() == null ? "" : request.getOrderSide().name(),
                 request.getOrderType() == null ? "" : request.getOrderType().name(),
@@ -55,7 +55,7 @@ public class BHexOptionApiRestClientImpl implements BHexOptionApiRestClient {
 
     @Override
     public OptionOrderResult cancelOptionOrder(CancelOrderRequest cancelOrderRequest) {
-        return executeSync(bHexOptionApiService.cancelOptionOrder(
+        return executeSync(libraexOptionApiService.cancelOptionOrder(
                 cancelOrderRequest.getOrderId(),
                 cancelOrderRequest.getClientOrderId(),
                 cancelOrderRequest.getRecvWindow(),
@@ -65,7 +65,7 @@ public class BHexOptionApiRestClientImpl implements BHexOptionApiRestClient {
 
     @Override
     public List<OptionOrderResult> getOptionOpenOrders(OptionOpenOrderRequest orderRequest) {
-        return executeSync(bHexOptionApiService.getOptionOpenOrders(
+        return executeSync(libraexOptionApiService.getOptionOpenOrders(
                 orderRequest.getSymbol(),
                 orderRequest.getOrderId(),
                 orderRequest.getLimit(),
@@ -78,7 +78,7 @@ public class BHexOptionApiRestClientImpl implements BHexOptionApiRestClient {
 
     @Override
     public List<OptionOrderResult> getOptionHistoryOrders(OptionHistoryOrderRequest orderRequest) {
-        return executeSync(bHexOptionApiService.getOptionHistoryOrders(
+        return executeSync(libraexOptionApiService.getOptionHistoryOrders(
                 orderRequest.getSymbol(),
                 orderRequest.getOrderSide() == null ? "" : orderRequest.getOrderSide().name(),
                 orderRequest.getOrderType() == null ? "" : orderRequest.getOrderType().name(),
@@ -91,7 +91,7 @@ public class BHexOptionApiRestClientImpl implements BHexOptionApiRestClient {
 
     @Override
     public List<OptionMatchResult> getOptionMyTrades(OptionTradeRequest request) {
-        return executeSync(bHexOptionApiService.getOptionMyTrades(
+        return executeSync(libraexOptionApiService.getOptionMyTrades(
                 request.getSymbol(),
                 request.getFromId(),
                 request.getToId(),
@@ -104,7 +104,7 @@ public class BHexOptionApiRestClientImpl implements BHexOptionApiRestClient {
 
     @Override
     public List<PositionResult> getOptionPositions(OptionPositionRequest request) {
-        return executeSync(bHexOptionApiService.getOptionPositions(
+        return executeSync(libraexOptionApiService.getOptionPositions(
                 request.getSymbol(),
                 request.getRecvWindow(),
                 request.getTimestamp()
@@ -113,7 +113,7 @@ public class BHexOptionApiRestClientImpl implements BHexOptionApiRestClient {
 
     @Override
     public List<SettlementResult> getOptionSettlements(OptionSettlementRequest request) {
-        return executeSync(bHexOptionApiService.getOptionSettlements(
+        return executeSync(libraexOptionApiService.getOptionSettlements(
                 request.getSymbol(),
                 request.getRecvWindow(),
                 request.getTimestamp()

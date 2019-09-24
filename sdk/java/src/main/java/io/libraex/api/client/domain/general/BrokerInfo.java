@@ -1,7 +1,9 @@
-package io.bhex.api.client.domain.general;
+package io.libraex.api.client.domain.general;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import io.bhex.api.client.constant.BHexConstants;
+
+import io.libraex.api.client.constant.libraexConstants;
+
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.List;
@@ -61,7 +63,7 @@ public class BrokerInfo {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, BHexConstants.TO_STRING_BUILDER_STYLE)
+        return new ToStringBuilder(this, libraexConstants.TO_STRING_BUILDER_STYLE)
                 .append("timezone", timezone)
                 .append("serverTime", serverTime)
                 .append("brokerFilters", brokerFilters)

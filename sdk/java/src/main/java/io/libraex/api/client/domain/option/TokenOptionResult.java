@@ -1,5 +1,5 @@
 
-package io.bhex.api.client.domain.option;
+package io.libraex.api.client.domain.option;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

@@ -1,26 +1,26 @@
-package io.bhex.api.test;
+package io.libraex.api.test;
 
-import io.bhex.api.client.BHexApiClientFactory;
-import io.bhex.api.client.BHexApiRestClient;
-import io.bhex.api.client.constant.BHexConstants;
-import io.bhex.api.test.constant.Constants;
+import io.libraex.api.client.libraexApiClientFactory;
+import io.libraex.api.client.libraexApiRestClient;
+import io.libraex.api.client.constant.libraexConstants;
+import io.libraex.api.test.constant.Constants;
 
 public class UserDataStreamRestApiTest {
 
     public static void main(String[] args) {
 
-        BHexApiClientFactory factory = BHexApiClientFactory.newInstance(Constants.ACCESS_KEY, Constants.SECRET_KEY);
-        BHexApiRestClient client = factory.newRestClient();
+        libraexApiClientFactory factory = libraexApiClientFactory.newInstance(Constants.ACCESS_KEY, Constants.SECRET_KEY);
+        libraexApiRestClient client = factory.newRestClient();
 
         System.out.println("\n ------start user data stream-----");
-        String listenKey = client.startUserDataStream(BHexConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis());
+        String listenKey = client.startUserDataStream(libraexConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis());
         System.out.println(listenKey);
 
         System.out.println("\n ------keepAlive user data stream-----");
-        client.keepAliveUserDataStream(listenKey, BHexConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis());
+        client.keepAliveUserDataStream(listenKey, libraexConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis());
 
         System.out.println("\n ------close user data stream-----");
-        client.closeUserDataStream(listenKey, BHexConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis());
+        client.closeUserDataStream(listenKey, libraexConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis());
 
     }
 

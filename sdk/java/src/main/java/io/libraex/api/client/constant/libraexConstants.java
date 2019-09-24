@@ -1,19 +1,19 @@
-package io.bhex.api.client.constant;
+package io.libraex.api.client.constant;
 
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-public class BHexConstants {
+public class libraexConstants {
 
     public static final long DEFAULT_RECEIVING_WINDOW = 5_000L;
 
-    public static final String API_BASE_URL = "https://api.bhex.com/";
+    public static final String API_BASE_URL = "https://api.libraex.xin/";
 
     /**
      * Streaming API base URL.
      */
-    public static final String WS_API_BASE_URL = "wss://wsapi.bhex.com/openapi/quote/ws/v1";
+    public static final String WS_API_BASE_URL = "wss://wsapi.libraex.xin/openapi/quote/ws/v1";
 
-    public static final String WS_API_USER_URL = "wss://wsapi.bhex.com/openapi/ws/";
+    public static final String WS_API_USER_URL = "wss://wsapi.libraex.xin/openapi/ws/";
 
 
     public static final String API_KEY_HEADER = "X-BH-APIKEY";

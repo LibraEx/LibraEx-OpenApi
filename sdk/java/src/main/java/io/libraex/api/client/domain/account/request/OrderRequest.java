@@ -1,7 +1,8 @@
-package io.bhex.api.client.domain.account.request;
+package io.libraex.api.client.domain.account.request;
 
-import io.bhex.api.client.constant.BHexConstants;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+
+import io.libraex.api.client.constant.libraexConstants;
 
 /**
  * Base request parameters for order-related methods.
@@ -14,7 +15,7 @@ public class OrderRequest {
 
     public OrderRequest() {
         this.timestamp = System.currentTimeMillis();
-        this.recvWindow = BHexConstants.DEFAULT_RECEIVING_WINDOW;
+        this.recvWindow = libraexConstants.DEFAULT_RECEIVING_WINDOW;
     }
 
     public Long getRecvWindow() {
@@ -37,7 +38,7 @@ public class OrderRequest {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, BHexConstants.TO_STRING_BUILDER_STYLE)
+        return new ToStringBuilder(this, libraexConstants.TO_STRING_BUILDER_STYLE)
                 .append("recvWindow", recvWindow)
                 .append("timestamp", timestamp)
                 .toString();

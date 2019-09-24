@@ -1,13 +1,13 @@
-package io.bhex.api.client;
+package io.libraex.api.client;
 
-import io.bhex.api.client.domain.account.*;
-import io.bhex.api.client.domain.account.request.*;
-import io.bhex.api.client.domain.general.BrokerInfo;
-import io.bhex.api.client.domain.market.*;
+import io.libraex.api.client.domain.account.*;
+import io.libraex.api.client.domain.account.request.*;
+import io.libraex.api.client.domain.general.BrokerInfo;
+import io.libraex.api.client.domain.market.*;
 
 import java.util.List;
 
-public interface BHexApiRestClient {
+public interface libraexApiRestClient {
 
     void ping();
 

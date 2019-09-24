@@ -1,66 +1,66 @@
-package io.bhex.api.client.exception;
+package io.libraex.api.client.exception;
 
-import io.bhex.api.client.BHexApiError;
+import io.libraex.api.client.libraexApiError;
 
 /**
- * An exception which can occur while invoking methods of the BHex API.
+ * An exception which can occur while invoking methods of the libraex API.
  */
-public class BHexApiException extends RuntimeException {
+public class libraexApiException extends RuntimeException {
 
     private static final long serialVersionUID = 3788669840036201041L;
     /**
-     * Error response object returned by BHex API.
+     * Error response object returned by libraex API.
      */
-    private BHexApiError error;
+    private libraexApiError error;
 
     /**
-     * Instantiates a new BHex api exception.
+     * Instantiates a new libraex api exception.
      *
      * @param error an error response object
      */
-    public BHexApiException(BHexApiError error) {
+    public libraexApiException(libraexApiError error) {
         this.error = error;
     }
 
     /**
-     * Instantiates a new BHex api exception.
+     * Instantiates a new libraex api exception.
      */
-    public BHexApiException() {
+    public libraexApiException() {
         super();
     }
 
     /**
-     * Instantiates a new BHex api exception.
+     * Instantiates a new libraex api exception.
      *
      * @param message the message
      */
-    public BHexApiException(String message) {
+    public libraexApiException(String message) {
         super(message);
     }
 
     /**
-     * Instantiates a new BHex api exception.
+     * Instantiates a new libraex api exception.
      *
      * @param cause the cause
      */
-    public BHexApiException(Throwable cause) {
+    public libraexApiException(Throwable cause) {
         super(cause);
     }
 
     /**
-     * Instantiates a new BHex api exception.
+     * Instantiates a new libraex api exception.
      *
      * @param message the message
      * @param cause   the cause
      */
-    public BHexApiException(String message, Throwable cause) {
+    public libraexApiException(String message, Throwable cause) {
         super(message, cause);
     }
 
     /**
-     * @return the response error object from BHex API, or null if no response object was returned (e.g. server returned 500).
+     * @return the response error object from libraex API, or null if no response object was returned (e.g. server returned 500).
      */
-    public BHexApiError getError() {
+    public libraexApiError getError() {
         return error;
     }
 
