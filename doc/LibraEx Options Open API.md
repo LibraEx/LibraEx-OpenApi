@@ -1,6 +1,6 @@
 # Base URL
 
-The base url of BHEX open API is: https://www.bhex.com/openapi
+The base url of LibraEx open API is: https://www.libraex.xin/openapi
 
 # Public Options Endpoints
 
@@ -27,7 +27,7 @@ name|type|example|description
 `timezone`|string|`UTC`|Timezone of timestamp
 `serverTime`|long|`1554887652929`|Retrieves the current time on server (in ms).
 
-In the `symbols` field, the endpoint will return information on current actively trading cryptos on BHEX. You can ignore this section.
+In the `symbols` field, the endpoint will return information on current actively trading cryptos on LibraEx. You can ignore this section.
 
 In the `options` field:
 All actively trading options will be displayed.
