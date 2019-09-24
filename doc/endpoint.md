@@ -2,12 +2,12 @@
 
 ## Base Domain
 
-bhex.com
+libraex.xin
 
 ## API Endpoint ($HOST)
 
 | Name               | base endpoint                                    |
 | ------------------ | ------------------------------------------------ |
-| rest-api           | **[https://api.bhex.com](https://api.bhex.com)** |
-| web-socket-streams | **[wss://wsapi.bhex.com](wss://wsapi.bhex.com)** |
-| user-data-stream   | **[wss://wsapi.bhex.com](wss://wsapi.bhex.com)** |
+| rest-api           | **[https://api.libraex.xin](https://api.libraex.xin)** |
+| web-socket-streams | **[wss://wsapi.libraex.xin](wss://wsapi.libraex.xin)** |
+| user-data-stream   | **[wss://wsapi.libraex.xin](wss://wsapi.libraex.xin)** |
