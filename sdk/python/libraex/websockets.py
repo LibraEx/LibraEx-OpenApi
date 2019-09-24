@@ -75,7 +75,7 @@ class LibraexClientFactory(WebSocketClientFactory, LibraexReconnectingClientFact
 
 class LibraexSocketManager(threading.Thread):
 
-    def __init__(self, api_key='', secret='', entry_point='wss://wsapi.libraex.com/openapi/', auth=True, rest_entry_point='https://api.libraex.com/openapi/'):
+    def __init__(self, api_key='', secret='', entry_point='wss://wsapi.libraex.xin/openapi/', auth=True, rest_entry_point='https://api.libraex.xin/openapi/'):
         threading.Thread.__init__(self)
         self.factories = {}
         self._conns = {}
