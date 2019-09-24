@@ -1,8 +1,8 @@
-# Web Socket Streams for BHEX (2019-08-12)
+# Web Socket Streams for LibraEx (2019-08-12)
 
 ## General WSS information
 
-* The base endpoint is: **wss://wsapi.bhex.com/**
+* The base endpoint is: **wss://wsapi.libraex.xin/**
 * Raw streams are accessed at **/openapi/quote/ws/v1**
 
 | name | values |
