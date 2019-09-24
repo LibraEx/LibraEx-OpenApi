@@ -4,7 +4,7 @@ import os
 
 from setuptools import setup, find_packages
 
-description = "Python SDK for Libraex REST And Websocket API (https://www.libraex.com)"
+description = "Python SDK for Libraex REST And Websocket API (https://www.libraex.xin)"
 
 here = os.path.abspath(os.path.dirname(__file__))
 
