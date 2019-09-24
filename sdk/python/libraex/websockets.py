@@ -6,11 +6,11 @@ from twisted.internet import reactor, ssl
 from twisted.internet.error import ReactorAlreadyRunning
 from twisted.internet.protocol import ReconnectingClientFactory
 
-from .exceptions import BhexRequestException
-from . client import BhexClient
+from .exceptions import LibraexRequestException
+from . client import LibraexClient
 
 
-class BhexClientProtocol(WebSocketClientProtocol):
+class LibraexClientProtocol(WebSocketClientProtocol):
 
     def __init__(self, factory, payload=None):
         super().__init__()
@@ -35,7 +35,7 @@ class BhexClientProtocol(WebSocketClientProtocol):
                 self.factory.callback(payload_obj)
 
 
-class BhexReconnectingClientFactory(ReconnectingClientFactory):
+class LibraexReconnectingClientFactory(ReconnectingClientFactory):
 
     # set initial delay to a short time
     initialDelay = 0.1
@@ -45,7 +45,7 @@ class BhexReconnectingClientFactory(ReconnectingClientFactory):
     maxRetries = 5
 
 
-class BhexClientFactory(WebSocketClientFactory, BhexReconnectingClientFactory):
+class LibraexClientFactory(WebSocketClientFactory, LibraexReconnectingClientFactory):
 
     def __init__(self, *args, payload=None, **kwargs):
         WebSocketClientFactory.__init__(self, *args, **kwargs)
@@ -53,7 +53,7 @@ class BhexClientFactory(WebSocketClientFactory, BhexReconnectingClientFactory):
         self.base_client = None
         self.payload = payload
 
-    protocol = BhexClientProtocol
+    protocol = LibraexClientProtocol
     _reconnect_error_payload = {
         'e': 'error',
         'm': 'Max reconnect retries reached'
@@ -70,12 +70,12 @@ class BhexClientFactory(WebSocketClientFactory, BhexReconnectingClientFactory):
             self.callback(self._reconnect_error_payload)
 
     def buildProtocol(self, addr):
-        return BhexClientProtocol(self, payload=self.payload)
+        return LibraexClientProtocol(self, payload=self.payload)
 
 
-class BhexSocketManager(threading.Thread):
+class LibraexSocketManager(threading.Thread):
 
-    def __init__(self, api_key='', secret='', entry_point='wss://wsapi.bhex.com/openapi/', auth=True, rest_entry_point='https://api.bhex.com/openapi/'):
+    def __init__(self, api_key='', secret='', entry_point='wss://wsapi.libraex.com/openapi/', auth=True, rest_entry_point='https://api.libraex.com/openapi/'):
         threading.Thread.__init__(self)
         self.factories = {}
         self._conns = {}
@@ -86,7 +86,7 @@ class BhexSocketManager(threading.Thread):
         self._listen_key = None
 
         if auth:
-            self._client = BhexClient(api_key=self._api_key, secret=self._secret, entry_point=rest_entry_point) if api_key and secret else None
+            self._client = LibraexClient(api_key=self._api_key, secret=self._secret, entry_point=rest_entry_point) if api_key and secret else None
 
         if not entry_point.endswith('/'):
             entry_point = entry_point + '/'
@@ -97,9 +97,9 @@ class BhexSocketManager(threading.Thread):
             return False
 
         factory_url = self._entry_point + path
-        factory = BhexClientFactory(factory_url, useragent='Bhex-P 1.0', payload=payload)
+        factory = LibraexClientFactory(factory_url, useragent='Libraex-P 1.0', payload=payload)
         factory.base_client = self
-        factory.protocol = BhexClientProtocol
+        factory.protocol = LibraexClientProtocol
         factory.callback = callback
         factory.reconnect = True
         self.factories[id_] = factory
@@ -111,7 +111,7 @@ class BhexSocketManager(threading.Thread):
     def _start_auth_socket(self, id_, payload, callback):
         listen_key = self._client.stream_get_listen_key()
         if not listen_key:
-            raise BhexRequestException('Get listen key failure.')
+            raise LibraexRequestException('Get listen key failure.')
         self._listen_key = listen_key.get('listenKey', '')
         path = 'ws/' + self._listen_key
         self._start_socket(id_, path, payload, callback)
@@ -154,7 +154,7 @@ class BhexSocketManager(threading.Thread):
         self._conns = {}
 
 
-class BhexWss(BhexSocketManager):
+class LibraexWss(LibraexSocketManager):
 
     def subscribe_to_realtimes(self, symbol, callback):
         id_ = "_".join(["realtimes", symbol])

@@ -1,6 +1,6 @@
 import time
 
-from bhex.client import BhexClient
+from libraex.client import LibraexClient
 
 if __name__ == '__main__':
 
@@ -9,7 +9,7 @@ if __name__ == '__main__':
         "https": "",
     }
 
-    b = BhexClient(api_key='', secret='', proxies=proxies)
+    b = LibraexClient(api_key='', secret='', proxies=proxies)
 
     print(b.time())
 

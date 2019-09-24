@@ -1,11 +1,11 @@
-from bhex.websockets import BhexWss
+from libraex.websockets import LibraexWss
 
 
 def handler(msg):
     print(msg)
 
 
-client = BhexWss(api_key='', secret='')
+client = LibraexWss(api_key='', secret='')
 
 client.subscribe_to_realtimes(symbol='BTCUSDT,ETHUSDT', callback=handler)
 

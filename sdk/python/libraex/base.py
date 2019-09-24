@@ -6,7 +6,7 @@ import urllib
 import requests
 import six
 
-from . exceptions import BhexAPIException, BhexRequestException
+from . exceptions import LibraexAPIException, LibraexRequestException
 
 
 class Request(object):
@@ -14,7 +14,7 @@ class Request(object):
     API_VERSION = 'v1'
     QUOTE_API_VERSION = 'v1'
 
-    def __init__(self, api_key, secret, entry_point='https://api.bhex.com/openapi/', proxies=None):
+    def __init__(self, api_key, secret, entry_point='https://api.libraex.com/openapi/', proxies=None):
 
         if not entry_point.endswith('/'):
             entry_point = entry_point + '/'
@@ -79,7 +79,7 @@ class Request(object):
 
         kwargs['headers'] = {
             'X-BH-APIKEY': self.api_key,
-            'User-Agent': 'Bhex-P 1.0'
+            'User-Agent': 'Libraex-P 1.0'
         }
 
         response = requests.request(method, uri, proxies=self.proxies, **kwargs)
@@ -88,11 +88,11 @@ class Request(object):
     def _handle_response(self, response):
 
         if not str(response.status_code).startswith('2') and not response.status_code == 400:
-            raise BhexAPIException(response)
+            raise LibraexAPIException(response)
         try:
             return response.json()
         except ValueError:
-            raise BhexRequestException('Invalid Response: %s' % response.text)
+            raise LibraexRequestException('Invalid Response: %s' % response.text)
 
     def ping(self):
         return self._get('ping')

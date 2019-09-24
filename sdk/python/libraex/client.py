@@ -1,7 +1,7 @@
 from . base import Request
 
 
-class BhexClient(Request):
+class LibraexClient(Request):
 
     def depth(self, symbol, limit=100):
         """
@@ -126,7 +126,7 @@ class BhexClient(Request):
         return self._get('depositOrders', signed=True, params=params)
 
 
-class BhexOptionClient(Request):
+class LibraexOptionClient(Request):
 
     def index(self):
         """

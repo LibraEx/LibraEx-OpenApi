@@ -1,13 +1,13 @@
-Welcome to Bhex-Python
+Welcome to Libraex-Python
 ======================
 
-An official Python implementation of the lastest Open API for Bhex.
+An official Python implementation of the lastest Open API for Libraex.
 
 Install
 -------
 
 ```bash
-pip install bhex
+pip install libraex
 ```
 
 Usage
@@ -15,9 +15,9 @@ Usage
 
 #### REST API
 
-Init bhex client:
+Init libraex client:
 ```python
-b = BhexClient(api_key='', secret='')
+b = LibraexClient(api_key='', secret='')
 ```
 
 Request with proxies:
@@ -28,16 +28,16 @@ proxies = {
   "https": "http://ip:port",
 }
 
-b = BhexClient(api_key='', secret='', proxies=proxies)
+b = LibraexClient(api_key='', secret='', proxies=proxies)
 ```
 
 #### Web Socket
 
 ##### Init
 
-Init bhex websocket client:
+Init libraex websocket client:
 ```python
-client = BhexWss(api_key='', secret='')
+client = LibraexWss(api_key='', secret='')
 ```
 
 ##### Subscribe
